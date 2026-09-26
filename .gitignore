@@ -30,8 +30,10 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
-.env*.local
+# Env files (never commit secrets) — only the template is tracked
+.env
+.env.*
+!.env.example
 
 # typescript
 *.tsbuildinfo
@@ -39,3 +41,37 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Signing keys and store credentials (Android keystores, EAS local
+# credentials, Play Store / App Store service accounts)
+*.keystore
+credentials.json
+credentials/
+*credentials*.json
+service-account*.json
+google-play*.json
+AuthKey_*.p8
+*.pfx
+
+# Logs
+*.log
+logs/
+
+# Database dumps / backups (contain members' personal data)
+*.dump
+*.backup
+backups/
+dump*.sql
+
+# AI / tooling local state (may hold tokens or session data)
+.claude/settings.local.json
+.mcp.json
+.impeccable/
+
+# Build & test artefacts
+coverage/
+playwright-report/
+test-results/
+*.apk
+*.aab
+*.ipa
