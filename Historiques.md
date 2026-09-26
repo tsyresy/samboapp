@@ -89,3 +89,19 @@ le scan d'une vraie carte imprimée, et le temps réel entre le site et l'app.
 - Premier build installable : `npx eas-cli@latest build --platform android`.
 - Plus tard : notifications push (nouveau message, appel), appels dans l'app
   via un *development build*, photo de profil depuis le téléphone.
+
+## Dépôt GitHub et secrets — 2026-09-27
+
+- Dépôt : `git@github.com:tsyresy/samboapp.git`, branche `main` (renommée
+  depuis `master`, le nom par défaut du modèle Expo, pour suivre Sambo-web).
+- Vérification avant la mise en ligne : aucun secret dans l'historique git
+  (ni clé Supabase, ni clé de service, ni mot de passe). `.env.local` (clé
+  publique) n'a jamais été commité ; `.env.example` ne contient que l'URL
+  publique du projet Supabase.
+- `.gitignore` renforcé : celui du modèle n'excluait que `.env*.local`, un
+  simple `.env` aurait donc été commité. Il exclut maintenant tous les `.env*`
+  sauf `.env.example`, ainsi que les keystores Android, les identifiants EAS,
+  les clés App Store et Play Store, les logs, les sauvegardes de base (données
+  des membres), l'état local des outils IA et les fichiers `.apk` / `.aab` /
+  `.ipa`. Même base de règles que le site, plus celles propres au mobile.
+- `.claude/settings.json` reste suivi : il ne fait qu'activer le plugin Expo.
